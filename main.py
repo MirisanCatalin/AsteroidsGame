@@ -33,6 +33,12 @@ def main():
         for obj in drawable:
             obj.draw(screen)
 
+        for aster in asteroid:
+            if player.collision_with(aster):
+                print("Game Over")
+                return
+            
+
         pygame.display.flip()
 
         # limit the framerate to 60 FPS
