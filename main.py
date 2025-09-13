@@ -31,6 +31,7 @@ def main():
 
         pygame.display.flip()
 
+        player.update(dt)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
