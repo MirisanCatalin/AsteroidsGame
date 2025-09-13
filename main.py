@@ -41,6 +41,12 @@ def main():
             if player.collision_with(aster):
                 print("Game Over")
                 return
+
+        for shot in bullet:
+            for aster in asteroid:
+                if shot.collision_with(aster):
+                    shot.kill()
+                    aster.kill()
             
 
         pygame.display.flip()
