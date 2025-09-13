@@ -46,7 +46,7 @@ def main():
             for aster in asteroid:
                 if shot.collision_with(aster):
                     shot.kill()
-                    aster.kill()
+                    aster.split()
             
 
         pygame.display.flip()
