@@ -6,7 +6,7 @@ import pygame
 
 class Player(CircleShape):
     def __init__(self, x, y):
-        super().__init__(x, y, PLAYER_RADIUS)
+        super().__init__(x, y, PLAYER_RADIUS * 0.75)
         self.rotation = 0
         self.shoot_cooldown = 0
         self.bomb_cooldown = 0
