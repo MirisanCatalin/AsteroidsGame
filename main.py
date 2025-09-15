@@ -5,6 +5,7 @@ from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
 from bomb import Bomb
+from explosion import Explosion
 
 def main():
     pygame.init()
@@ -18,6 +19,7 @@ def main():
     asteroid = pygame.sprite.Group()
     bullet = pygame.sprite.Group()
     bomba = pygame.sprite.Group()
+    explosions = pygame.sprite.Group()
     
     # Set containers BEFORE creating objects
     Player.containers = (updatable, drawable)
@@ -25,7 +27,7 @@ def main():
     AsteroidField.containers = (updatable,)
     Shot.containers = (updatable, drawable, bullet)
     Bomb.containers = (updatable, drawable, bomba)
-
+    Explosion.containers = (updatable, drawable, explosions)
     # Create game objects
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     field = AsteroidField()
@@ -56,6 +58,10 @@ def main():
         
         screen.blit(bg, (0, 0))
         # Check collisions BEFORE drawing
+        
+        explosions.draw(screen)
+        explosions.update()
+
         for aster in asteroid:
             if player.collision_with(aster):
                 
@@ -64,16 +70,20 @@ def main():
                 player.position = pygame.Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
                 
                 lives -= 1
-        
-        for shot in bullet:
-            for aster in asteroid:
-                if shot.collision_with(aster):
+       
+        for aster in asteroid:
+            for shot in bullet:
+                if aster.collision_with(shot):
+                    pos = aster.position
+                    explo = Explosion(pos.x, pos.y)
+                    explosions.add(explo)
                     shot.kill()
                     player_score += aster.split()
-
-        for bom in bomba:
-            for aster in asteroid:
-                if bom.collision_with(aster):
+            for bom in bomba:
+                if aster.collision_with(bom):
+                    pos = aster.position
+                    explo = Explosion(pos.x, pos.y)
+                    explosions.add(explo)
                     bom.kill()
                     player_score += aster.split()
 
