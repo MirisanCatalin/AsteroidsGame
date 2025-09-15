@@ -6,6 +6,8 @@ from asteroidfield import AsteroidField
 from shot import Shot
 from bomb import Bomb
 from explosion import Explosion
+from new_life import NewLife
+from lifespawner import LifeSpawner
 
 def main():
     pygame.init()
@@ -20,6 +22,8 @@ def main():
     bullet = pygame.sprite.Group()
     bomba = pygame.sprite.Group()
     explosions = pygame.sprite.Group()
+    all_sprites = pygame.sprite.Group()
+    life_group = pygame.sprite.Group()
     
     # Set containers BEFORE creating objects
     Player.containers = (updatable, drawable)
@@ -28,6 +32,11 @@ def main():
     Shot.containers = (updatable, drawable, bullet)
     Bomb.containers = (updatable, drawable, bomba)
     Explosion.containers = (updatable, drawable, explosions)
+    NewLife.containers = (updatable, drawable, life_group, all_sprites)
+    LifeSpawner.containers = ()
+    
+    life_spawner = LifeSpawner(cooldown=7000)  # spawn every 7s
+
     # Create game objects
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     field = AsteroidField()
@@ -46,6 +55,9 @@ def main():
         highscore = 0
     
     while lives > 0:
+
+        now = pygame.time.get_ticks()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
@@ -55,6 +67,15 @@ def main():
         
         # Clear screen
         #screen.fill("black")
+
+        # try spawning life
+        life_spawner.try_spawn(now, all_sprites, life_group)
+        for life in life_group:
+            if player.collision_with(life):
+                life.kill()
+                lives += 1
+        # update
+        all_sprites.update(dt / 1000)
         
         screen.blit(bg, (0, 0))
         # Check collisions BEFORE drawing
