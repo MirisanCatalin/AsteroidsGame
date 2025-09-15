@@ -68,12 +68,12 @@ def main():
                     shot.kill()
                     player_score += aster.split()
 
-        for boom in bomba:
+        for bom in bomba:
             for aster in asteroid:
-                if boom.collision_with(aster):
+                if bom.collision_with(aster):
+                    bom.kill()
                     player_score += aster.split()
-                boom.kill()
-        
+
         # Draw all objects
         for obj in drawable:
             obj.draw(screen)
