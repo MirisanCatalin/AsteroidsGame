@@ -98,7 +98,14 @@ def main():
         screen.blit(score_text, (10, 10))
         screen.blit(highscore_text, (10, 50))
         screen.blit(lives_text, (10, 90))
-        
+
+        gun_text = my_font.render('Press 1: Gun', True, (255, 255, 255))
+        laser_text = my_font.render('Press 2: Laser', True, (255, 255, 255))
+        brick_text = my_font.render('Press 3: Brick', True, (255, 255, 255))
+        screen.blit(gun_text, (SCREEN_WIDTH - 200, 10))
+        screen.blit(laser_text, (SCREEN_WIDTH - 200, 50))
+        screen.blit(brick_text, (SCREEN_WIDTH - 200, 90))
+
         # Update highscore if needed
         if player_score > highscore:
             highscore = player_score

@@ -8,7 +8,7 @@ git push -u origin main
 -- Done -- Add acceleration to the player movement
 -- Done -- Make the objects wrap around the screen instead of disappearing
 -- Done -- Add a background image
-Create different weapon types
+-- Done -- Create different weapon types
 -- Done -- Make the asteroids lumpy instead of perfectly round
 -- Done -- Make the ship have a triangular hit box instead of a circular one
 Add a shield power-up

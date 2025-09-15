@@ -2,6 +2,9 @@ from circleshape import CircleShape
 from constants import *
 from shot import Shot
 from bomb import Bomb
+from explosion import Explosion
+from brick import Brick
+from laser import Laser
 import pygame
 
 class Player(CircleShape):
@@ -10,6 +13,7 @@ class Player(CircleShape):
         self.rotation = 0
         self.shoot_cooldown = 0
         self.bomb_cooldown = 0
+        self.gun_type = 1
     
     # in the player class
     def triangle(self):
@@ -36,14 +40,23 @@ class Player(CircleShape):
         if self.velocity.length() > PLAYER_MAX_SPEED:
             self.velocity.scale_to_length(PLAYER_MAX_SPEED)
 
-    def shoot(self):
+    def shoot_gun(self, gun_type):
         if self.shoot_cooldown > 0:
             return None
         else:
             self.shoot_cooldown = PLAYER_SHOOT_COOLDOWN
-        shot = Shot(self.position.x, self.position.y, SHOT_RADIUS)
-        forward = pygame.Vector2(0, 1).rotate(self.rotation)
-        shot.velocity = forward * PLAYER_SHOOT_SPEED
+        if gun_type == 1:
+            shot = Shot(self.position.x, self.position.y, SHOT_RADIUS)
+            forward = pygame.Vector2(0, 1).rotate(self.rotation)
+            shot.velocity = forward * PLAYER_SHOOT_SPEED
+        if gun_type == 2:
+            shot = Laser(self.position.x, self.position.y, SHOT_RADIUS)
+            forward = pygame.Vector2(0, 1).rotate(self.rotation)
+            shot.velocity = forward * PLAYER_SHOOT_SPEED
+        if gun_type == 3:
+            shot = Brick(self.position.x, self.position.y,SHOT_RADIUS)
+            forward = pygame.Vector2(0, 1).rotate(self.rotation)
+            shot.velocity = forward * PLAYER_SHOOT_SPEED
 
     def place_bomb(self):
         if self.bomb_cooldown > 0:
@@ -80,6 +93,14 @@ class Player(CircleShape):
         if keys[pygame.K_s]:
             self.move(-dt)
         if keys[pygame.K_SPACE]:
-            self.shoot()
+            self.shoot_gun(self.gun_type)
         if keys[pygame.K_b]:
             self.place_bomb()
+        if keys[pygame.K_LSHIFT]:
+            self.accelerate(dt)
+        if keys[pygame.K_1]:
+            self.gun_type = 1
+        if keys[pygame.K_2]:
+            self.gun_type = 2
+        if keys[pygame.K_3]:
+            self.gun_type = 3
