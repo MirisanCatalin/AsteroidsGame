@@ -33,6 +33,8 @@ def main():
     dt = 0
     player_score = 0
     lives = PLAYER_STARTING_LIVES
+
+    bg = pygame.image.load("space_background.png").convert()
     
     # Load highscore (with error handling)
     try:
@@ -50,8 +52,9 @@ def main():
         updatable.update(dt)
         
         # Clear screen
-        screen.fill("black")
+        #screen.fill("black")
         
+        screen.blit(bg, (0, 0))
         # Check collisions BEFORE drawing
         for aster in asteroid:
             if player.collision_with(aster):
@@ -108,7 +111,7 @@ def main():
         # Clear screen
         screen.fill("black")
         # Draw all objects
-        game_over = my_font.render(f"Game Over\nCurrent score {player_score}", True, (255, 0, 0))
+        game_over = my_font.render(f"Game Over Current score {player_score}", True, (0, 0, 0))
         screen.blit(game_over, (SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 - 50))
 
         pygame.display.flip()
