@@ -36,13 +36,12 @@ pip install pygame
 ```
 
 Installation and Setup
-
+```
     Clone the repository:
     Bash
-
-git clone [https://github.com/MirisanCatalin/AsteroidsGame.git](https://github.com/MirisanCatalin/AsteroidsGame.git)
-cd AsteroidsGame
-
+    git clone [https://github.com/MirisanCatalin/AsteroidsGame.git](https://github.com/MirisanCatalin/AsteroidsGame.git)
+    cd AsteroidsGame
+```
 Run the game:
 Bash
 
