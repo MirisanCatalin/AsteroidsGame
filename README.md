@@ -58,27 +58,31 @@ uv run main.py "fix my calculator app, it's not starting correctly"
 # Great! The calculator app now seems to be working correctly.
 # The output shows the expression and the result in a formatted way.
 ```
-🎓 What I Learned
+
+---
+
+### 🎓 What I Learned
 
 Building this AI Agent taught me practical concepts in both Python and AI tooling:
 
-1. Multi-Directory Python Projects
+### 1. Multi-Directory Python Projects
 
 Learned to structure a larger Python project with modules and functions spread across directories.
 
-2. AI Tools in Practice
+### 2. AI Tools in Practice
 
 Gained hands-on experience with using pre-trained LLMs to solve tasks, understanding prompts, and iterative problem solving.
 
-3. Functional Programming
+### 3. Functional Programming
 
 Applied Python functions effectively to manage file I/O, code execution, and agent logic.
 
-4. CLI Tool Development
+### 4. CLI Tool Development
 
 Developed a user-friendly CLI interface, learning argument parsing and output formatting.
 
-🛠️ Built With
+---
+### 🛠️ Built With
 
 Python – Core language
 
@@ -86,6 +90,7 @@ Google Gemini API – Pre-trained LLM for decision-making
 
 uv – Project and package management
 
+---
 🤝 Acknowledgements
 
 Inspired by Cursor and Claude Code, this project is a hands-on exploration of AI-assisted programming agents and demonstrates how to leverage LLMs in real-world Python workflows.
