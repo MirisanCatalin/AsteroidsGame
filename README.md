@@ -1,109 +1,91 @@
-# AsteroidsGame 🚀
+# Build an AI Agent 🤖
 
-An authentic, Python-based clone of the classic 1979 arcade game, Asteroids. Navigate your spaceship, destroy incoming asteroids, and survive for the high score!
+A Python-based CLI tool that acts like a mini "Claude Code" agent. Give it a coding task, and it will automatically read, modify, and execute Python files to try and solve it!
 
 [![Python](https://img.shields.io/badge/Language-Python-blue.svg)](https://www.python.org/)
-[![Game Engine](https://img.shields.io/badge/Engine-Pygame-blue.svg)](https://www.pygame.org/news)
-[![Status](https://img.shields.io/badge/Status-Complete-brightgreen.svg)]()
+[![CLI Tool](https://img.shields.io/badge/Tool-CLI-blue.svg)]()
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/License-Unspecified-lightgrey.svg)](#license)
 
 ***
 
 ## ✨ Features
 
-This game implements core mechanics from the original arcade classic, managed through an Object-Oriented approach:
+This agent implements a basic AI-powered workflow for automating Python coding tasks:
 
-* **Classic Gameplay:** Control a spaceship with thrust and rotation.
-* **Dynamic Asteroids:** Asteroids break into smaller pieces when shot, making the game progressively more challenging.
-* **Weapons System:** Standard laser shots and a limited-use **Bomb** mechanic.
-* **Power-Ups:** Collect **New Life** drops that randomly spawn.
-* **High Score Tracking:** Saves and displays the persistent high score.
-* **Visual Effects:** Includes ship thrust effects and asteroid **explosions**.
+* **Task Execution:** Accepts user-provided coding tasks via the CLI.
+* **File Management:** Scans directories, reads files, and overwrites contents when needed.
+* **Code Execution:** Runs Python files to test and validate changes.
+* **Iterative Problem Solving:** Chooses functions intelligently and repeats until the task is complete (or fails hilariously 😅).
+* **AI-Powered Decisions:** Uses a pre-trained LLM via Google Gemini API to determine actions.
 
-***
+---
 
 ## 🚀 Getting Started
 
-These instructions will get you a copy of the project running on your local machine for development and play.
+Follow these instructions to get your agent running locally.
 
 ### Prerequisites
 
-You need **Python 3.x** and the **Pygame** library installed.
+* Python 3.10+  
+* [uv](https://uv.dev) project and package manager  
+* Unix-like shell (e.g., zsh or bash)  
+
+### Installation
 
 ```bash
-# Install the Pygame library
-pip install pygame
+# Clone the repository
+git clone https://github.com/yourusername/Build-AI-Agent.git
+cd Build-AI-Agent
+
+# Install dependencies (if any)
+pip install -r requirements.txt
+```
+# Usage
+```
+uv run main.py "fix my calculator app, it's not starting correctly"
 ```
 
-Installation and Setup
+## Example Output:
 ```
-    Clone the repository:
-    Bash
-    git clone [https://github.com/MirisanCatalin/AsteroidsGame.git](https://github.com/MirisanCatalin/AsteroidsGame.git)
-    cd AsteroidsGame
+# Calling function: get_files_info
+# Calling function: get_file_content
+# Calling function: write_file
+# Calling function: run_python_file
+# Calling function: write_file
+# Calling function: run_python_file
+# Final response:
+# Great! The calculator app now seems to be working correctly.
+# The output shows the expression and the result in a formatted way.
 ```
-Run the game:
-Bash
+🎓 What I Learned
 
-    python main.py
+Building this AI Agent taught me practical concepts in both Python and AI tooling:
 
-Controls
+1. Multi-Directory Python Projects
 
-Key	Action
-Arrow Up / W	Apply thrust / accelerate forward
-Arrow Left / A	Rotate spaceship counter-clockwise
-Arrow Right / D	Rotate spaceship clockwise
-Spacebar	Fire laser shot
-B	Deploy Bomb (limited use)
+Learned to structure a larger Python project with modules and functions spread across directories.
 
-## 🎓 What I Learned
+2. AI Tools in Practice
 
-Developing an Asteroids clone was a significant step in my programming journey, providing hands-on experience with fundamental game development concepts:
+Gained hands-on experience with using pre-trained LLMs to solve tasks, understanding prompts, and iterative problem solving.
 
-# 1. Game Loop Implementation
+3. Functional Programming
 
-I mastered the fundamental structure of all video games: the Game Loop (Input → Update State → Render). This ensures smooth, consistent frame rates and responsive gameplay.
+Applied Python functions effectively to manage file I/O, code execution, and agent logic.
 
-# 2. Object-Oriented Programming (OOP)
+4. CLI Tool Development
 
-The project is built entirely using OOP, which was essential for managing complexity:
+Developed a user-friendly CLI interface, learning argument parsing and output formatting.
 
-    Classes and Inheritance: Created separate, self-contained classes for every entity (e.g., Player, Asteroid, Laser, Explosion).
+🛠️ Built With
 
-    Entity Management: Developed systems within main.py and asteroidfield.py to efficiently create, update, and destroy game objects.
+Python – Core language
 
-# 3. 2D Physics and Vector Math
+Google Gemini API – Pre-trained LLM for decision-making
 
-I applied principles of vector mathematics to create realistic motion:
+uv – Project and package management
 
-    Thrust and Acceleration: Implemented logic for the player ship to accelerate and decelerate based on thrust in the direction of rotation.
+🤝 Acknowledgements
 
-    Rotation: Calculated rotation and applied it to the ship's direction of movement and its visual sprite.
-
-    Wrapping: Implemented screen wrapping (torus physics) so objects disappear on one side of the screen and reappear on the opposite side.
-
-# 4. Collision Detection
-
-I implemented the logic necessary to detect when two objects occupy the same space:
-
-    Circle Collision: Used mathematical formulas to check for collisions between circular hitboxes (player, asteroids, bullets).
-
-    Collision Response: Handled outcomes like scoring points, destroying bullets, and splitting asteroids into smaller pieces.
-
-# 5. Game State and Persistence
-
-I learned how to manage crucial game data:
-
-    State Tracking: Managed player lives, current score, and game mode (playing, game over).
-
-    Data Persistence: Used File I/O to load and save the high score permanently via highscore.txt.
-
-## 🛠️ Built With
-
-    Python – Core language
-
-    Pygame – Primary library for 2D graphics, input handling, and sound
-
-## 🤝 Acknowledgements
-
-This project was a major milestone in my journey into game development, allowing me to translate mathematical and OOP concepts into a functional, interactive experience.
+Inspired by Cursor and Claude Code, this project is a hands-on exploration of AI-assisted programming agents and demonstrates how to leverage LLMs in real-world Python workflows.
